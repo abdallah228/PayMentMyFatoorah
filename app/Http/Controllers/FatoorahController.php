@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class FatoorahController extends Controller
 {
     //
-    private $fatooraServices;
+    private $fatoora;
     public function __construct(FatooraServices $fatooraServices) {
-        $this->$fatooraServices = $fatooraServices;
+        $this->fatoora = $fatooraServices;
     }
 
 
@@ -25,8 +25,8 @@ class FatoorahController extends Controller
                 //'MobileCountryCode'  => '+965',
                 //'CustomerMobile'     => '1234567890',
                 'CustomerEmail'      => 'email@example.com',
-                'CallBackUrl'        => env('CallBackUrl'),
-                'ErrorUrl'           => env('ErrorUrl'), //or 'https://example.com/error.php'
+                'CallBackUrl'        => 'https://google.com/',
+                'ErrorUrl'           => 'https://youtube.com/', //or 'https://example.com/error.php'
                 'Language'           => 'en', //or 'ar'
                 //'CustomerReference'  => 'orderId',
                 //'CustomerCivilId'    => 'CivilId',
@@ -36,7 +36,7 @@ class FatoorahController extends Controller
                 //'CustomerAddress'    => $customerAddress,
                 //'InvoiceItems'       => $invoiceItems,
         ];
-        $this->fatooraServices->sendPayment($data);
+      return  $this->fatoora->sendPayment($data);
 
     }
 

@@ -39,7 +39,7 @@ class FatooraServices {
     }
 
     public function sendPayment($data) {
-        $response = $this->buildRequest('v2/SendPayment','post',$data);
+       return $response = $this->buildRequest('v2/SendPayment','post',$data);
     }
 
 }

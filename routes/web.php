@@ -18,7 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::get('/pay','FatoorahController@payOrder');
-// route::get('/callBack',FatoorahController::class,'callBack');
-// route::get('/error',FatoorahController::class,'error');
 
