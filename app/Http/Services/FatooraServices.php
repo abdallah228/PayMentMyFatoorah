@@ -11,6 +11,7 @@ class FatooraServices {
 
         /**
          * fattoraService constructor
+         *
          * @param CLient request_client
          */
         public function __construct(Client $request_client) {
@@ -40,6 +41,11 @@ class FatooraServices {
 
     public function sendPayment($data) {
        return $response = $this->buildRequest('v2/SendPayment','post',$data);
+    }
+
+    public function getPaymentStatus($data) {
+       return $response = $this->buildRequest('v2/getPaymentStatus','post',$data);
+
     }
 
 }

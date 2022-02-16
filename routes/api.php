@@ -21,5 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 route::post('/pay',[FatoorahController::class,'payOrder']);
-// route::get('/callBack',FatoorahController::class,'callBack');
+route::get('/callBack',[FatoorahController::class,'callBack'])->name('fatoorah.callback');
 // route::get('/error',FatoorahController::class,'error');

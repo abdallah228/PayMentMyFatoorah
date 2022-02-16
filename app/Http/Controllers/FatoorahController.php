@@ -18,14 +18,14 @@ class FatoorahController extends Controller
         $data = [
             //Fill required data
             'NotificationOption' => 'Lnk', //'SMS', 'EML', or 'ALL'
-            'InvoiceValue'       => '50',
+            'InvoiceValue'       => '1000',
             'CustomerName'       => 'fname lname',
                 //Fill optional data
                 'DisplayCurrencyIso' => 'KWD',
                 //'MobileCountryCode'  => '+965',
                 //'CustomerMobile'     => '1234567890',
                 'CustomerEmail'      => 'email@example.com',
-                'CallBackUrl'        => 'https://google.com/',
+                'CallBackUrl'        => 'http://127.0.0.1:8008/api/callBack',
                 'ErrorUrl'           => 'https://youtube.com/', //or 'https://example.com/error.php'
                 'Language'           => 'en', //or 'ar'
                 //'CustomerReference'  => 'orderId',
@@ -38,10 +38,20 @@ class FatoorahController extends Controller
         ];
       return  $this->fatoora->sendPayment($data);
 
+      //make table transaction
+      //invoiceId
+      //user id
+
     }
 
-    public function callBack() {
-
+    public function callBack(Request $request) {
+        //save transaction to database
+        // dd($request);
+        $data = [];
+        $data['Key'] = $request->paymentId;
+        $data['KeyType'] = 'paymentId' ;
+        $paymentData =  $this->fatoora->getPaymentStatus($data);
+       return $paymentData['Data']['InvoiceId'];
     }
 
     public function error() {
